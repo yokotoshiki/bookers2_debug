@@ -1,0 +1,39 @@
+<div class="container">
+	<h2>User info</h2>
+
+	<%= form_for(@user) do |f| %>
+
+		<!-- エラーメッセージ表示-->
+		<% if @user.errors.any? %>
+			<div id="error_explanation">
+				<h3><%= @user.errors.count %>error prohibited this obj from being saved:</h3><
+				<ul>
+					<% @user.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+		<!-- エラーメッセージ表示-->
+
+	  	<div class="field row">
+			<%= f.label :Name %>
+			<%= f.text_field :name, class: "col-xs-12 book_title" %>
+		</div>
+
+	    <div class="field">
+	         <%= f.label :Image %>
+	         <%= f.attachment_field :profile_image %>
+	    </div>
+
+		<div class="field row">
+			<%= f.label :Introduction %>
+			<%= f.text_area :introduction, class: "col-xs-12 book_body" %>
+		</div>
+
+		<div class="actions row">
+			<%= f.submit  class: "btn btn-primary col-xs-12" %>
+		</div>
+
+	<% end %>
+</div>
